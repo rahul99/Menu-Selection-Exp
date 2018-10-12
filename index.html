@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Experiment to compare Marking and Radial menus</title>
+
+	<!-- Marking Menu Stylesheet -->
+   <link href="./css/external/marking-menu.css" rel="stylesheet">
+	<!-- Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Stint+Ultra+Condensed' rel='stylesheet' type='text/css'>
+	<!-- Experiment Stylesheet -->
+	<link href="./css/experiment.css" rel="stylesheet">
+
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+.container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+</style>
+</head>
+<body>
+
+<h1>Pre Experiment Questionnaire</h1>
+
+<div class="container">
+  <h2>Introduction</h2>
+	<pre>
+You have been chosen as part of an experiment to analyze two types of menus. You will be asked to select a set of objects from various
+categories using the two types of menus.
+
+For this experiment you will also be asked to use a mouse and the trackpad on your laptop.
+Please attach your USB mouse to the laptop now and keep it attached till the end of the experiment for convenience.
+
+The experiment will take about 5-10 minutes. Please complete the experiment in one sitting.
+
+The interface you will be working with is shown below
+</pre>
+<pre>
+
+</pre>
+<!-- State Div -->
+ <div class="row" id="state-container">
+	<div class="cellstate">
+		<span class="label label-primary">Trial</span>
+		<span class="label label-default" id="trialNumber">&nbsp;</span>
+	</div>
+		 <div class="cellstate">
+        	<span class="label label-primary">Input Device</span>
+			<span class="label label-default" id="inputDevice">&nbsp;</span>
+      </div>
+      <div class="cellstate">
+			<span class="label label-primary">Menu Type</span>
+			<span class="label label-default" id="menuType">&nbsp;</span>
+      </div>
+      <div class="cellstate">
+        	<span class="label label-primary">Menu Depth</span>
+			<span class="label label-default" id="menuDepth">&nbsp;</span>
+      </div>
+		<div class="cellstimulusresponse">
+			<span class="label label-primary">Please select</span>
+			<span class="label label-default" id="targetItem">&nbsp;</span>
+      </div>
+	  	<div class="cellstimulusresponse">
+        	<span class="label label-primary">Item selected</span>
+			<span class="label label-default" id="selectedItem">&nbsp;</span>
+      </div>
+
+    </div>
+
+<pre>
+<strong>Trial</strong> will show the current trial number and the total number of trials to be done.
+
+<strong>Input device</strong> will show the input device you need to use for the current trial.
+It will show either <strong>Mouse</strong> or <strong>Trackpad</strong>. Please use the correct device accordingly.
+
+<strong>Menu Type</strong> will show the type of menu that you will use in the current trial.
+Your task is to select the item shown under <strong>Please Select</strong>.
+
+<strong>Menu Depth</strong> is the depth at which the item you must select resides.
+
+These fields will be shown at the top of the page for each trial. Please look at these carefully before selecting the item in each trial.
+</pre>
+
+	<h2>Usage of menus:</h2>
+	<h4>Radial menu:</h4>
+<pre>•	Right click once to popup the menu
+•	Left click on an item to select it
+•	Right click to reset menu
+</pre>
+<h4>Marking menu:</h4>
+<pre>•	Hold left mouse button to popup menu
+•	Drag pointer to category and release left mouse button to select it
+•	Release left mouse button to close menu
+•	Advanced users can draw the entire stroke to select item instead of waiting for the menu popup.
+</pre>
+If at any time you need help on how to use the menus, click on the help button available at the top of the page for each trial.
+<br>
+
+	<h4>NOTE: The first 4 trials are for practise to familiarize you to the interface and the menus. They will not be counted towards the final results.</h4>
+	Please fill out the following form as it will help us by providing us with important demographic information. It will be collected anonymously and will not be shared with anyone. The experiment will begin after clicking submit at the bottom of the page.
+	<h2>Consent Form:</h2>
+	<form action="./experiment.html">
+    <label for="pno">Participant Number</label>
+    <input required type="number" min='0' max='12' id="pno" name="pno" placeholder="PID">
+
+	 <label>Age</label>
+    <input required type="number" id="age" name="age" placeholder="Your Age">
+	  <br><br>
+    <label>Gender</label>
+	  <select required id="gender" name="gender">
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select>
+	  <br>
+
+	  <label for="country">Country</label>
+    <input required  type="text" id="country" name="country" placeholder="Country">
+	 <br>
+	  <label>For how many years have you owned/used a computer(PC or Laptop)?</label>
+    <input required  type="number" id="comp" name="compexp" placeholder="Years">
+	  <br><br>
+	  <label>For how many years have you owned/used a laptop?</label>
+    <input required  type="number" id="laptop" name="lapexp" placeholder="Years">
+	  <br><br>
+	  <label>Have you previously used Marking Menus?</label>
+	  <select required  id="mmenu" name="mmenu">
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select>
+
+    <br>
+	  <label>Have you previously used Radial Menus?</label>
+	  <select required  id="rmenu" name="rmenu">
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select>
+	  <Label> I hereby consent that the data provided by me for this experiment can be used for the purposes of research.</Label>
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+</body>
+	<script src="./js/experiment.js"></script>
+</html>
