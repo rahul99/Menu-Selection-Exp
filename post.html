@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+   <head>
+      <title>HCI Experiment</title>
+        <style>
+        body {font-family: Helvetica, cambria;}
+        * {box-sizing: border-box;}
+        input[type=text], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+        input[type=submit] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+        .container {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+        </style>
+
+   </head>
+
+   <body>
+      <table width = "100%" border = "2">
+
+         <tr>
+            <td colspan = "1" bgcolor = "#b5dcb3">
+               <h1>Post Experiment Questionnaire</h1>
+            </td>
+         </tr>
+
+         <tr valign = "top">
+            <td bgcolor = "#eee" width = "100" height = "200">
+               <div class="container">
+                         <h4> Thank you for taking part in the experiment. We appreciate your valuable time :) <br>
+                         Please answer a few post-experiment questionnaire to help us understand your experience and caliberate our findings! <br><br>
+                         In addition, there are two files that will be generated upon completion of this form. Please email them to <u>rsoni@u.nus.edu</u>
+                         </h4>
+
+    <h2>Questionnaire</h2>
+    <form>
+        <label>How difficult was to follow the experiments?</label>
+        <select required id="difficulty" name="difficulty">
+        <option value="Fairly Easy">Fairly Easy</option>
+        <option value="Easy">Easy</option>
+        <option value="Somewhat Difficult">Somewhat Difficult</option>
+        <option value="Quite Difficult">Quite Difficult</option>
+        </select>
+        <br><br>
+
+        <label>To what extent did you feel stressed?</label>
+        <select required id="stress" name="stress">
+        <option value="Not at all">Not at all</option>
+        <option value="Somewhat stressed">Somewhat stressed</option>
+        <option value="Quite Stressed">Quite Stressed</option>
+        <option value="Got a headache">Got a headache</option>
+        </select>
+        <br><br>
+
+        <label>Which menu did you like overall?</label>
+        <select required id="like" name="like">
+        <option value="Radial Menu">Radial Menu</option>
+        <option value="Marking Menu">Marking Menu</option>
+        </select>
+        <br><br>
+
+        <label>In context of menu you like (above), what depth was easy to use?</label>
+        <select required id="depth" name="depth">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        </select>
+        <br><br>
+
+        <label>How bored/interested were you throughout the experiment?</label>
+        <select required id="interest" name="interest">
+        <option value="Fairly bored">Not at all</option>
+        <option value="Somewhat Bored">Somewhat stressed</option>
+        <option value="Neutral">Quite Stressed</option>
+        <option value="Somewhat interested">Got a headache</option>
+        <option value="Fairly interested">Got a headache</option>
+        </select>
+        <br><br>
+
+        <label>How attentive were you throughout the experiment?</label>
+        <select required id="attention" name="attention">
+        <option value="Not at all">Not at all</option>
+        <option value="Somewhat attentive">Somewhat stressed</option>
+        <option value="Quite attentive">Quite Stressed</option>
+        <option value="I was at my best">Got a headache</option>
+        </select>
+        <br><br>
+
+        <label>How difficult was to follow the instructions?</label>
+        <select required id="instructions" name="instructions">
+        <option value="Not at all">Not at all</option>
+        <option value="Somewhat difficult">Somewhat stressed</option>
+        <option value="Quite difficult">Quite Stressed</option>
+        <option value="Extremely tough">Got a headache</option>
+        </select>
+        <br><br>
+
+        <h4>Consent: By clicking the "submit" button, you give us your consent to
+            use your data solely for the purpose of research and nothing else.
+        </h4>
+        <input type="submit" value="Submit">
+    </form>
+
+       </div>
+            </td>
+         </tr>
+         <tr>
+            <td colspan = "2" bgcolor = "#b5dcb3">
+            </td>
+         </tr>
+
+      </table>
+   </body>
+
+<script src="./js/experiment.js"></script>
+</html>

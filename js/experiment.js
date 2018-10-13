@@ -1,12 +1,24 @@
 'use strict';
 
 // Location of data files
-const trialsFile = "./data/experiments.csv"
-const menuL1File = "./data/menu_depth_1.csv"
-const menuL2File = "./data/menu_depth_2.csv"
-const menuL3File = "./data/menu_depth_3.csv"
+const baseFile = "./data/";
+var trialsFile = null;
+const menuL1File = "./data/menu_depth_1.csv";
+const menuL2File = "./data/menu_depth_2.csv";
+const menuL3File = "./data/menu_depth_3.csv";
 
-// Global variables
+// Global variables - pre experiment
+var pid = 0;
+var age = 0;
+var gender = null;
+var occupation = null;
+var domHand = null;
+var pcUsage = null;
+var markingFamiliar = null;
+var radialFamiliar = null;
+var multiTask = null;
+
+// Global variables - experiments
 var menu;
 var trialsData = [];
 var numTrials = 0;
@@ -22,6 +34,14 @@ var tracker = new ExperimentTracker();
 var markingMenuSubscription = null;
 var radialMenuSvg = null;
 
+// Global variables - post experiment
+var difficulty = null;
+var stress = null;
+var like = null;
+var easy = null;
+var interest = null;
+var attention = null;
+var instructions = null;
 
 // Load CSV files from data and return text
 function getData(relativePath) {
@@ -36,20 +56,33 @@ $(document).mousemove(function(event){tracker.measureDist(event)});
 // Loads the CSV data files on page load and store it to global variables
 function initExperiment() {
 
+	var pre_data = window.location.searc.split('?')[1].split('&');
+	pid = pre_data[0].split('=')[1];
+	age = pre_data[1].split('=')[1];
+	gender = pre_data[2].split('=')[1];
+	occupation = pre_data[3].split('=')[1];
+	domHand = pre_data[4].split('=')[1];
+	pcUsage = pre_data[5].split('=')[1];
+	markingFamiliar = pre_data[6].split('=')[1];
+	radialFamiliar = pre_data[7].split('=')[1];
+	multiTask = pre_data[7].split('=')[1];
+
 	// Get Trails
+	trialsFile = baseFile+pid+'.csv'
+	console.log(trialsFile)
 	var data = getData(trialsFile);
 
 	var records = data.split("\n");
 	numTrials = records.length - 1;
 	for (var i = 1; i <= numTrials; i++) {
 		var cells = records[i].split(",");
-		var menuType = cells[0].trim();
-		var usage = cells[1].trim();
+		var usage = cells[0].trim();
+		var menuType = cells[1].trim();
 		var menuDepth = cells[2].trim();
 		var targetItem = cells[3].trim();
 		trialsData[i] = {
-			'Menu Type': menuType,
 			'Usage Scenario': usage,
+			'Menu Type': menuType,
 			'Menu Depth': menuDepth,
 			'Target Item': targetItem
 		};
@@ -82,17 +115,24 @@ function loadNextTrial(e){
 // Move to next trai and record events
 function nextTrial() {
 
-	
+	if (currentTrial==1){
+		prompt('First 6 trials are for practice. Get yourself acquainted');
+	}
+
+	if (currentTrial==7){
+		prompt('Experiment begins');
+	}
+
 	if (currentTrial <= numTrials) {
 
-		var menuType = trialsData[currentTrial]['Menu Type'];
 		var usage = trialsData[currentTrial]['Usage Scenario'];
+		var menuType = trialsData[currentTrial]['Menu Type'];
 		var menuDepth = trialsData[currentTrial]['Menu Depth'];
 		var targetItem = trialsData[currentTrial]['Target Item'];
 
 		document.getElementById("trialNumber").innerHTML = String(currentTrial) + "/" + String(numTrials);
-		document.getElementById("menuType").innerHTML = menuType;
 		document.getElementById("usage").innerHTML = usage;		
+		document.getElementById("menuType").innerHTML = menuType;
 		document.getElementById("menuDepth").innerHTML = menuDepth;
 		document.getElementById("targetItem").innerHTML = targetItem;
 		document.getElementById("selectedItem").innerHTML = "&nbsp;";
@@ -100,10 +140,20 @@ function nextTrial() {
 
 		tracker.newTrial();
 		tracker.trial = currentTrial;
-		tracker.menuType = menuType;
 		tracker.usage = usage;
+		tracker.menuType = menuType;
 		tracker.menuDepth = menuDepth;
 		tracker.targetItem = targetItem;
+		tracker.pid = pid;
+		tracker.age = age;
+		tracker.gender = gender;
+		tracker.occupation = occupation;
+		tracker.domHand = domHand;
+		tracker.pcUsage = pcUsage;
+		tracker.markingFamiliar = markingFamiliar;
+		tracker.markexp = markexp;
+		tracker.radialFamiliar = radialFamiliar;
+		tracker.multiTask = multiTask;
 
 		if (menuType === "Marking") {
 				
@@ -141,11 +191,9 @@ function nextTrial() {
 	    var nextButton = document.getElementById("nextButton");
 	    nextButton.innerHTML = "Done";
 		tracker.toCsv();
+		window.open('post.html')
 	}
 }
-
-
-
 
 
 /*Functions related to MarkingMenu*/
