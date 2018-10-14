@@ -116,10 +116,9 @@
         </select>
         <br><br>
 
-        <h4>Consent: By clicking the "submit" button, you give us your consent to
-            use your data solely for the purpose of research and nothing else.
+        <h4>Experiment and Survey complete. Please click "Submit" and close this window.
         </h4>
-        <input type="submit" value="Submit">
+        <input type="submit" value="Submit" onclick="download_post_exp_data()">
     </form>
 
        </div>
@@ -132,6 +131,24 @@
 
       </table>
    </body>
+
+   	<script src="./js/experiment.js"></script>
+	<script>
+		function download_post_exp_data(){
+			data = window.location.search.split('?')[1].split('&');
+			var text = ''
+			for (var i = 0; i < 7; i++) {
+				text = text+data[i]+'\n';
+			}
+			console.log(text)
+			var hiddenLink = document.createElement('a');
+			hiddenLink.href = 'data:text/txt;charset=utf-8,' + encodeURI(text);
+			hiddenLink.target = '_blank';
+			hiddenLink.download = 'post_exp.txt';
+			document.body.appendChild(hiddenLink);
+			hiddenLink.click();
+		}
+	</script>
 
 <script src="./js/experiment.js"></script>
 </html>
